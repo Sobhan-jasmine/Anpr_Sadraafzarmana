@@ -1,0 +1,23 @@
+[Unit]
+Description=gunicorn uvicorn service for anpr Service API
+After=syslog.target
+
+[Service]
+ExecStart=/home/sobhan/test_proj/my_env/bin/gunicorn -b 0.0.0.0:9209 -w 4 -k uvicorn.workers.UvicornWorker main:app --name Test_get_img --chdir /home/sobhan/test_proj --access-logfile /home/sobhan/test_proj/access.log --error-logfile /home/sobhan/test_proj/errors.log --user sobhan
+# \/ \/ <- Added post recording for better restart perf.
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=120
+PrivateTmp=true
+# /\ /\ <- Added post recording for better restart perf.
+
+# Requires systemd version 211 or newer
+RuntimeDirectory=/home/sobhan/test_proj
+Restart=always
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+
+[Install]
+WantedBy=multi-user.target
