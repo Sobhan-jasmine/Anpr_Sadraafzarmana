@@ -1,7 +1,7 @@
 Anpr - automated number plate recognation service
 
-================================================================
-Architecture of our Anpr service
+
+Architecture of our Anpr service ================================================================
 ![image](https://github.com/Sobhan-jasmine/Anpr_Sadraafzarmana/assets/143384392/b60b43e6-261c-4cd3-8089-d1fd68d14800)
 
 ____________________________________________________________________________________________________________________________________________
